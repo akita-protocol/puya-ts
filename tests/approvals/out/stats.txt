@@ -17,6 +17,7 @@ arc4-method-selector::ContractOne                                 91           3
 arc4-method-selector::ContractTwo                                174           3          86           2          86           2
 arc4-struct::StructDemo                                          470           3         237           2         225           2
 arc4-types::Arc4TypesTestContract                               1178           3          27           2          27           2
+arc56-ui::RaffleUi                                                95           3          50           2          50           2
 array-destructuring::ArrayDestructuringAlgo                      281           3          74           2          72           2
 array-literals::ArrayLiteralsAlgo                                274           3          84           2          84           2
 assert-match::AssertMatchContract                                101           3          68           2          67           2

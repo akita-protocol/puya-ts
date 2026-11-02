@@ -1,0 +1,103 @@
+#pragma version 11
+#pragma typetrack false
+
+// @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram() -> uint64:
+main:
+    intcblock 0 1
+    bytecblock "ticketPrice" 0x151f7c75
+    txn ApplicationID
+    bnz main_after_if_else@2
+    // tests/approvals/arc56-ui.algo.ts:9
+    // ticketPrice = GlobalState<uint64>({ initialValue: 1_000_000 })
+    bytec_0 // "ticketPrice"
+    pushint 1000000
+    app_global_put
+    // tests/approvals/arc56-ui.algo.ts:10
+    // endTimestamp = GlobalState<uint64>({ initialValue: 0 })
+    pushbytes "endTimestamp"
+    intc_0 // 0
+    app_global_put
+
+main_after_if_else@2:
+    // tests/approvals/arc56-ui.algo.ts:5-8
+    // @contract({
+    //   ui: { glyph: 'Ticket', color: '#14b8a6', defaultAction: 'raffle_enter' },
+    // })
+    // export class RaffleUi extends Contract {
+    txn NumAppArgs
+    bz main___algots__.defaultCreate@11
+    txn OnCompletion
+    !
+    assert
+    txn ApplicationID
+    assert
+    pushbytess 0x17c62bb1 0x9805f2e3 // method "enter(uint64)uint64", method "price()uint64"
+    txna ApplicationArgs 0
+    match main_enter_route@6 main_price_route@7
+    err
+
+main_price_route@7:
+    // tests/approvals/arc56-ui.algo.ts:35
+    // return this.ticketPrice.value
+    intc_0 // 0
+    // tests/approvals/arc56-ui.algo.ts:9
+    // ticketPrice = GlobalState<uint64>({ initialValue: 1_000_000 })
+    bytec_0 // "ticketPrice"
+    // tests/approvals/arc56-ui.algo.ts:35
+    // return this.ticketPrice.value
+    app_global_get_ex
+    assert // check GlobalState exists
+    // tests/approvals/arc56-ui.algo.ts:33
+    // @abimethod({ readonly: true, ui: { action: 'raffle_view', glyph: 'Eye' } })
+    itob
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_enter_route@6:
+    // tests/approvals/arc56-ui.algo.ts:12-28
+    // @abimethod({
+    //   ui: {
+    //     action: 'raffle_enter',
+    //     glyph: 'Ticket',
+    //     label: 'Enter raffle',
+    //     card: {
+    //       show: [
+    //         { label: 'Ticket price', from: { source: 'global', data: 'ticketPrice' }, format: 'amount' },
+    //         { label: 'Ends', from: { source: 'global', data: 'endTimestamp' }, format: 'time' },
+    //       ],
+    //       bind: { tickets: { input: 'count', label: 'Tickets', min: 1 } },
+    //       pay: { amount: { mul: [{ source: 'global', data: 'ticketPrice' }, { arg: 'tickets' }] } },
+    //       enabled: { before: { source: 'global', data: 'endTimestamp' } },
+    //       confirm: 'Enter with {tickets} tickets?',
+    //     },
+    //   },
+    // })
+    txna ApplicationArgs 1
+    dup
+    len
+    pushint 8
+    ==
+    assert // invalid number of bytes for arc4.uint64
+    bytec_1 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main___algots__.defaultCreate@11:
+    // tests/approvals/arc56-ui.algo.ts:5-8
+    // @contract({
+    //   ui: { glyph: 'Ticket', color: '#14b8a6', defaultAction: 'raffle_enter' },
+    // })
+    // export class RaffleUi extends Contract {
+    txn OnCompletion
+    !
+    txn ApplicationID
+    !
+    &&
+    return

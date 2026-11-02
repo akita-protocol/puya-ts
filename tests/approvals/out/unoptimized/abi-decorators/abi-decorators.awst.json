@@ -327,7 +327,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -385,7 +386,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -447,7 +449,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -533,7 +536,8 @@
           "resource_encoding": "value",
           "readonly": true,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -743,7 +747,8 @@
               }
             }
           },
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -829,7 +834,8 @@
           "resource_encoding": "value",
           "readonly": true,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -915,7 +921,8 @@
           "resource_encoding": "value",
           "readonly": true,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -1136,7 +1143,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 60,
@@ -1285,7 +1293,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -1426,7 +1435,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -1493,7 +1503,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 74,
@@ -1604,7 +1615,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -1671,7 +1683,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 82,
@@ -1780,7 +1793,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -1850,7 +1864,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 89,
@@ -1959,7 +1974,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -2029,6 +2045,7 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   }
 ]

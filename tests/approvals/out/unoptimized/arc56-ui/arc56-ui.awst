@@ -1,0 +1,45 @@
+contract RaffleUi
+{
+  globals {
+    ["ticketPrice"]: uint64
+    ["endTimestamp"]: uint64
+  }
+  approvalProgram(): bool
+  {
+    if (!Boolean(txn<ApplicationID>())) {
+      this.constructor()
+    }
+    return arc4Router()
+  }
+  
+  clearProgram(): bool
+  {
+    return True
+  }
+  
+  enter(tickets: uint64): uint64
+  {
+    return tickets
+  }
+  
+  price(): uint64
+  {
+    return GlobalState["ticketPrice"]
+  }
+  
+  __algots__.defaultCreate(): void
+  {
+  }
+  
+  constructor(): void
+  {
+    super.constructor()
+    GlobalState["ticketPrice"]: uint64 = 1000000
+    GlobalState["endTimestamp"]: uint64 = 0
+  }
+  
+  BaseContract::constructor(): void
+  {
+  }
+  
+}

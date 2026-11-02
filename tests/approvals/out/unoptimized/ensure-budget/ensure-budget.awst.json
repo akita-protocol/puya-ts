@@ -426,6 +426,7 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   }
 ]

@@ -1,0 +1,189 @@
+{
+    "name": "RaffleUi",
+    "structs": {},
+    "methods": [
+        {
+            "name": "enter",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "tickets"
+                }
+            ],
+            "returns": {
+                "type": "uint64"
+            },
+            "actions": {
+                "create": [],
+                "call": [
+                    "NoOp"
+                ]
+            },
+            "readonly": false,
+            "events": [],
+            "recommendations": {},
+            "ui": {
+                "action": "raffle_enter",
+                "glyph": "Ticket",
+                "label": "Enter raffle",
+                "card": {
+                    "show": [
+                        {
+                            "label": "Ticket price",
+                            "from": {
+                                "source": "global",
+                                "data": "ticketPrice"
+                            },
+                            "format": "amount"
+                        },
+                        {
+                            "label": "Ends",
+                            "from": {
+                                "source": "global",
+                                "data": "endTimestamp"
+                            },
+                            "format": "time"
+                        }
+                    ],
+                    "bind": {
+                        "tickets": {
+                            "input": "count",
+                            "label": "Tickets",
+                            "min": 1
+                        }
+                    },
+                    "pay": {
+                        "amount": {
+                            "mul": [
+                                {
+                                    "source": "global",
+                                    "data": "ticketPrice"
+                                },
+                                {
+                                    "arg": "tickets"
+                                }
+                            ]
+                        }
+                    },
+                    "enabled": {
+                        "before": {
+                            "source": "global",
+                            "data": "endTimestamp"
+                        }
+                    },
+                    "confirm": "Enter with {tickets} tickets?"
+                }
+            }
+        },
+        {
+            "name": "price",
+            "args": [],
+            "returns": {
+                "type": "uint64"
+            },
+            "actions": {
+                "create": [],
+                "call": [
+                    "NoOp"
+                ]
+            },
+            "readonly": true,
+            "events": [],
+            "recommendations": {},
+            "ui": {
+                "action": "raffle_view",
+                "glyph": "Eye"
+            }
+        }
+    ],
+    "arcs": [
+        22,
+        28
+    ],
+    "networks": {},
+    "state": {
+        "schema": {
+            "global": {
+                "ints": 2,
+                "bytes": 0
+            },
+            "local": {
+                "ints": 0,
+                "bytes": 0
+            }
+        },
+        "keys": {
+            "global": {
+                "ticketPrice": {
+                    "keyType": "AVMString",
+                    "valueType": "AVMUint64",
+                    "key": "dGlja2V0UHJpY2U="
+                },
+                "endTimestamp": {
+                    "keyType": "AVMString",
+                    "valueType": "AVMUint64",
+                    "key": "ZW5kVGltZXN0YW1w"
+                }
+            },
+            "local": {},
+            "box": {}
+        },
+        "maps": {
+            "global": {},
+            "local": {},
+            "box": {}
+        }
+    },
+    "bareActions": {
+        "create": [
+            "NoOp"
+        ],
+        "call": []
+    },
+    "sourceInfo": {
+        "approval": {
+            "sourceInfo": [
+                {
+                    "pc": [
+                        88
+                    ],
+                    "errorMessage": "check GlobalState exists"
+                },
+                {
+                    "pc": [
+                        104
+                    ],
+                    "errorMessage": "invalid number of bytes for arc4.uint64"
+                }
+            ],
+            "pcOffsetMethod": "none"
+        },
+        "clear": {
+            "sourceInfo": [],
+            "pcOffsetMethod": "none"
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDExCiNwcmFnbWEgdHlwZXRyYWNrIGZhbHNlCgovLyBAYWxnb3JhbmRmb3VuZGF0aW9uL2FsZ29yYW5kLXR5cGVzY3JpcHQvYXJjNC9pbmRleC5kLnRzOjpDb250cmFjdC5hcHByb3ZhbFByb2dyYW0oKSAtPiB1aW50NjQ6Cm1haW46CiAgICBpbnRjYmxvY2sgMCAxCiAgICBieXRlY2Jsb2NrICJ0aWNrZXRQcmljZSIgMHgxNTFmN2M3NQogICAgdHhuIEFwcGxpY2F0aW9uSUQKICAgIGJueiBtYWluX2FmdGVyX2lmX2Vsc2VAMgogICAgLy8gdGVzdHMvYXBwcm92YWxzL2FyYzU2LXVpLmFsZ28udHM6OQogICAgLy8gdGlja2V0UHJpY2UgPSBHbG9iYWxTdGF0ZTx1aW50NjQ+KHsgaW5pdGlhbFZhbHVlOiAxXzAwMF8wMDAgfSkKICAgIGJ5dGVjXzAgLy8gInRpY2tldFByaWNlIgogICAgcHVzaGludCAxMDAwMDAwCiAgICBhcHBfZ2xvYmFsX3B1dAogICAgLy8gdGVzdHMvYXBwcm92YWxzL2FyYzU2LXVpLmFsZ28udHM6MTAKICAgIC8vIGVuZFRpbWVzdGFtcCA9IEdsb2JhbFN0YXRlPHVpbnQ2ND4oeyBpbml0aWFsVmFsdWU6IDAgfSkKICAgIHB1c2hieXRlcyAiZW5kVGltZXN0YW1wIgogICAgaW50Y18wIC8vIDAKICAgIGFwcF9nbG9iYWxfcHV0CgptYWluX2FmdGVyX2lmX2Vsc2VAMjoKICAgIC8vIHRlc3RzL2FwcHJvdmFscy9hcmM1Ni11aS5hbGdvLnRzOjUtOAogICAgLy8gQGNvbnRyYWN0KHsKICAgIC8vICAgdWk6IHsgZ2x5cGg6ICdUaWNrZXQnLCBjb2xvcjogJyMxNGI4YTYnLCBkZWZhdWx0QWN0aW9uOiAncmFmZmxlX2VudGVyJyB9LAogICAgLy8gfSkKICAgIC8vIGV4cG9ydCBjbGFzcyBSYWZmbGVVaSBleHRlbmRzIENvbnRyYWN0IHsKICAgIHR4biBOdW1BcHBBcmdzCiAgICBieiBtYWluX19fYWxnb3RzX18uZGVmYXVsdENyZWF0ZUAxMQogICAgdHhuIE9uQ29tcGxldGlvbgogICAgIQogICAgYXNzZXJ0CiAgICB0eG4gQXBwbGljYXRpb25JRAogICAgYXNzZXJ0CiAgICBwdXNoYnl0ZXNzIDB4MTdjNjJiYjEgMHg5ODA1ZjJlMyAvLyBtZXRob2QgImVudGVyKHVpbnQ2NCl1aW50NjQiLCBtZXRob2QgInByaWNlKCl1aW50NjQiCiAgICB0eG5hIEFwcGxpY2F0aW9uQXJncyAwCiAgICBtYXRjaCBtYWluX2VudGVyX3JvdXRlQDYgbWFpbl9wcmljZV9yb3V0ZUA3CiAgICBlcnIKCm1haW5fcHJpY2Vfcm91dGVANzoKICAgIC8vIHRlc3RzL2FwcHJvdmFscy9hcmM1Ni11aS5hbGdvLnRzOjM1CiAgICAvLyByZXR1cm4gdGhpcy50aWNrZXRQcmljZS52YWx1ZQogICAgaW50Y18wIC8vIDAKICAgIC8vIHRlc3RzL2FwcHJvdmFscy9hcmM1Ni11aS5hbGdvLnRzOjkKICAgIC8vIHRpY2tldFByaWNlID0gR2xvYmFsU3RhdGU8dWludDY0Pih7IGluaXRpYWxWYWx1ZTogMV8wMDBfMDAwIH0pCiAgICBieXRlY18wIC8vICJ0aWNrZXRQcmljZSIKICAgIC8vIHRlc3RzL2FwcHJvdmFscy9hcmM1Ni11aS5hbGdvLnRzOjM1CiAgICAvLyByZXR1cm4gdGhpcy50aWNrZXRQcmljZS52YWx1ZQogICAgYXBwX2dsb2JhbF9nZXRfZXgKICAgIGFzc2VydCAvLyBjaGVjayBHbG9iYWxTdGF0ZSBleGlzdHMKICAgIC8vIHRlc3RzL2FwcHJvdmFscy9hcmM1Ni11aS5hbGdvLnRzOjMzCiAgICAvLyBAYWJpbWV0aG9kKHsgcmVhZG9ubHk6IHRydWUsIHVpOiB7IGFjdGlvbjogJ3JhZmZsZV92aWV3JywgZ2x5cGg6ICdFeWUnIH0gfSkKICAgIGl0b2IKICAgIGJ5dGVjXzEgLy8gMHgxNTFmN2M3NQogICAgc3dhcAogICAgY29uY2F0CiAgICBsb2cKICAgIGludGNfMSAvLyAxCiAgICByZXR1cm4KCm1haW5fZW50ZXJfcm91dGVANjoKICAgIC8vIHRlc3RzL2FwcHJvdmFscy9hcmM1Ni11aS5hbGdvLnRzOjEyLTI4CiAgICAvLyBAYWJpbWV0aG9kKHsKICAgIC8vICAgdWk6IHsKICAgIC8vICAgICBhY3Rpb246ICdyYWZmbGVfZW50ZXInLAogICAgLy8gICAgIGdseXBoOiAnVGlja2V0JywKICAgIC8vICAgICBsYWJlbDogJ0VudGVyIHJhZmZsZScsCiAgICAvLyAgICAgY2FyZDogewogICAgLy8gICAgICAgc2hvdzogWwogICAgLy8gICAgICAgICB7IGxhYmVsOiAnVGlja2V0IHByaWNlJywgZnJvbTogeyBzb3VyY2U6ICdnbG9iYWwnLCBkYXRhOiAndGlja2V0UHJpY2UnIH0sIGZvcm1hdDogJ2Ftb3VudCcgfSwKICAgIC8vICAgICAgICAgeyBsYWJlbDogJ0VuZHMnLCBmcm9tOiB7IHNvdXJjZTogJ2dsb2JhbCcsIGRhdGE6ICdlbmRUaW1lc3RhbXAnIH0sIGZvcm1hdDogJ3RpbWUnIH0sCiAgICAvLyAgICAgICBdLAogICAgLy8gICAgICAgYmluZDogeyB0aWNrZXRzOiB7IGlucHV0OiAnY291bnQnLCBsYWJlbDogJ1RpY2tldHMnLCBtaW46IDEgfSB9LAogICAgLy8gICAgICAgcGF5OiB7IGFtb3VudDogeyBtdWw6IFt7IHNvdXJjZTogJ2dsb2JhbCcsIGRhdGE6ICd0aWNrZXRQcmljZScgfSwgeyBhcmc6ICd0aWNrZXRzJyB9XSB9IH0sCiAgICAvLyAgICAgICBlbmFibGVkOiB7IGJlZm9yZTogeyBzb3VyY2U6ICdnbG9iYWwnLCBkYXRhOiAnZW5kVGltZXN0YW1wJyB9IH0sCiAgICAvLyAgICAgICBjb25maXJtOiAnRW50ZXIgd2l0aCB7dGlja2V0c30gdGlja2V0cz8nLAogICAgLy8gICAgIH0sCiAgICAvLyAgIH0sCiAgICAvLyB9KQogICAgdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQogICAgZHVwCiAgICBsZW4KICAgIHB1c2hpbnQgOAogICAgPT0KICAgIGFzc2VydCAvLyBpbnZhbGlkIG51bWJlciBvZiBieXRlcyBmb3IgYXJjNC51aW50NjQKICAgIGJ5dGVjXzEgLy8gMHgxNTFmN2M3NQogICAgc3dhcAogICAgY29uY2F0CiAgICBsb2cKICAgIGludGNfMSAvLyAxCiAgICByZXR1cm4KCm1haW5fX19hbGdvdHNfXy5kZWZhdWx0Q3JlYXRlQDExOgogICAgLy8gdGVzdHMvYXBwcm92YWxzL2FyYzU2LXVpLmFsZ28udHM6NS04CiAgICAvLyBAY29udHJhY3QoewogICAgLy8gICB1aTogeyBnbHlwaDogJ1RpY2tldCcsIGNvbG9yOiAnIzE0YjhhNicsIGRlZmF1bHRBY3Rpb246ICdyYWZmbGVfZW50ZXInIH0sCiAgICAvLyB9KQogICAgLy8gZXhwb3J0IGNsYXNzIFJhZmZsZVVpIGV4dGVuZHMgQ29udHJhY3QgewogICAgdHhuIE9uQ29tcGxldGlvbgogICAgIQogICAgdHhuIEFwcGxpY2F0aW9uSUQKICAgICEKICAgICYmCiAgICByZXR1cm4K",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDExCiNwcmFnbWEgdHlwZXRyYWNrIGZhbHNlCgovLyBAYWxnb3JhbmRmb3VuZGF0aW9uL2FsZ29yYW5kLXR5cGVzY3JpcHQvYmFzZS1jb250cmFjdC5kLnRzOjpCYXNlQ29udHJhY3QuY2xlYXJTdGF0ZVByb2dyYW0oKSAtPiB1aW50NjQ6Cm1haW46CiAgICBwdXNoaW50IDEKICAgIHJldHVybgo="
+    },
+    "byteCode": {
+        "approval": "CyACAAEmAgt0aWNrZXRQcmljZQQVH3x1MRhAABYogcCEPWeADGVuZFRpbWVzdGFtcCJnMRtBADcxGRREMRhEggIEF8YrsQSYBfLjNhoAjgIADAABACIoZUQWKUxQsCNDNhoBSRWBCBJEKUxQsCNDMRkUMRgUEEM=",
+        "clear": "C4EBQw=="
+    },
+    "compilerInfo": {
+        "compiler": "puya",
+        "compilerVersion": {
+            "major": 5,
+            "minor": 10,
+            "patch": 1
+        }
+    },
+    "events": [],
+    "templateVariables": {},
+    "ui": {
+        "glyph": "Ticket",
+        "color": "#14b8a6",
+        "defaultAction": "raffle_enter"
+    }
+}

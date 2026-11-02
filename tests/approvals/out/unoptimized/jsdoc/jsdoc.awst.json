@@ -398,7 +398,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -546,7 +547,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -691,6 +693,7 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   }
 ]

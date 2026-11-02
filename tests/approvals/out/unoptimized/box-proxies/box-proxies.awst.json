@@ -5148,7 +5148,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 366,
@@ -5835,7 +5836,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 413,
@@ -7108,7 +7110,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -7347,7 +7350,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 513,
@@ -7477,7 +7481,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 519,
@@ -9374,7 +9379,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -12333,7 +12339,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -12575,7 +12582,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 846,
@@ -13061,7 +13069,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -13152,7 +13161,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 881,
@@ -13393,7 +13403,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -13506,7 +13517,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 896,
@@ -15124,7 +15136,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -15264,7 +15277,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 990,
@@ -18797,7 +18811,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -19136,7 +19151,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -19262,7 +19278,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -19431,7 +19448,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -19831,7 +19849,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -20781,7 +20800,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -21585,7 +21605,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -21951,7 +21972,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -22297,7 +22319,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -22721,7 +22744,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -23438,7 +23462,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -25666,7 +25691,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -25792,7 +25818,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -25961,7 +25988,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -26532,7 +26560,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -27259,7 +27288,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 1772,

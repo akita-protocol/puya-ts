@@ -837,7 +837,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -1211,7 +1212,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -3635,7 +3637,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -4756,7 +4759,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -6016,7 +6020,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -6467,7 +6472,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -6900,7 +6906,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -8767,7 +8774,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -9662,7 +9670,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": null
+          "validate_encoding": null,
+          "ui": null
         }
       },
       {
@@ -9731,7 +9740,8 @@
       0
     ],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 679,
