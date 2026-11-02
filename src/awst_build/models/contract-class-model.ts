@@ -145,6 +145,7 @@ export class ContractClassModel {
       sourceLocation: this.sourceLocation,
       avmVersion: this.options?.avmVersion ?? null,
       autosalt: this.options?.autosalt ?? null,
+      ui: this.options?.ui ?? null,
     })
   }
 

@@ -2,6 +2,7 @@ import { NoImplementation } from './internal/errors'
 import { ConstructorFor } from './internal/typescript-helpers'
 import { uint64 } from './primitives'
 import { NumberRange } from './util'
+import type { ContractUi } from './arc4/ui'
 
 /**
  * The base type for all Algorand TypeScript contracts
@@ -71,6 +72,11 @@ export type ContractOptions = {
    * contract all slots 0-10 will be marked as reserved.
    */
   scratchSlots?: Array<number | NumberRange>
+  /**
+   * Presentation metadata for the contract (icon, color and default action), written to the
+   * top-level `ui` field in the ARC-56 output. Values must be literals.
+   */
+  ui?: ContractUi
   /**
    * Allows defining what values should be used for global and local uint and bytes storage
    * values when creating a contract. Used when outputting ARC-32 application.json schemas.
