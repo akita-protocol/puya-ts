@@ -16,6 +16,7 @@ import { DecoratorDataBuilder, NodeBuilder } from './index'
 import { ObjectLiteralExpressionBuilder } from './literal/object-literal-expression-builder'
 import { mapStringConstant, requireBooleanConstant, requireInstanceBuilder, requireStringConstant } from './util'
 import { parseFunctionArgs } from './util/arg-parsing'
+import { requireJsonObjectLiteral } from './util/json-literal'
 
 const ocaMap: Record<string, OnCompletionAction> = {
   NoOp: OnCompletionAction.NoOp,
@@ -84,7 +85,7 @@ export class Arc4AbiMethodDecoratorBuilder extends NodeBuilder {
 
   call(args: ReadonlyArray<NodeBuilder>, typeArgs: ReadonlyArray<PType>, sourceLocation: SourceLocation<ts.CallExpression>): NodeBuilder {
     const {
-      args: [{ allowActions, onCreate, readonly, name, resourceEncoding, defaultArguments, validateEncoding }],
+      args: [{ allowActions, onCreate, readonly, name, resourceEncoding, defaultArguments, validateEncoding, ui }],
     } = parseFunctionArgs({
       args,
       typeArgs,
@@ -100,6 +101,7 @@ export class Arc4AbiMethodDecoratorBuilder extends NodeBuilder {
           resourceEncoding: a.optional(stringPType),
           validateEncoding: a.optional(stringPType),
           defaultArguments: a.optional(),
+          ui: a.optional(),
         }),
       ],
     })
@@ -116,6 +118,7 @@ export class Arc4AbiMethodDecoratorBuilder extends NodeBuilder {
       validateEncoding: validateEncoding && mapStringConstant(validateEncodingMap, validateEncoding.resolve()),
       readonly: readonly ? requireBooleanConstant(readonly).value : undefined,
       defaultArguments: resolveDefaultArguments(defaultArguments, sourceLocation),
+      ui: ui && requireJsonObjectLiteral(ui, sourceLocation),
     })
   }
 }

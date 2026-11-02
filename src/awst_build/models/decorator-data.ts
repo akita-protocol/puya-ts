@@ -16,6 +16,8 @@ export type Arc4AbiDecoratorData = {
   nameOverride: string | undefined
   resourceEncoding: ResourceEncoding | undefined
   validateEncoding: boolean | undefined
+  /** ARC-56 `ui` extension for the method, as compact JSON text */
+  ui: string | undefined
   defaultArguments: Record<
     string,
     | {
@@ -60,6 +62,8 @@ export type ContractOptionsDecoratorData = {
   autosalt?: boolean
   name?: string
   scratchSlots?: Set<bigint>
+  /** ARC-56 `ui` extension for the contract, as compact JSON text */
+  ui?: string
   stateTotals?: {
     globalUints?: bigint
     globalBytes?: bigint

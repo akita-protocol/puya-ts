@@ -4,6 +4,7 @@ import { AnyFunction, DeliberateAny, InstanceMethod } from '../internal/typescri
 import { OnCompleteActionStr } from '../on-complete-action'
 import { bytes, BytesCompat, uint64 } from '../primitives'
 import { ARC4Encoded } from './encoded-types'
+import type { MethodUi } from './ui'
 
 export * from './c2c'
 export * from './encoded-types'
@@ -145,6 +146,12 @@ export type AbiMethodConfig<TContract extends Contract> = {
    * A map of parameter names to the default argument source
    */
   defaultArguments?: Record<string, DefaultArgument<TContract>>
+
+  /**
+   * Presentation metadata for this method (icon, label, action and an optional call form),
+   * written to the method's `ui` field in the ARC-56 output. Values must be literals.
+   */
+  ui?: MethodUi
 }
 
 /**
@@ -271,3 +278,5 @@ export function encodeArc4<const T>(value: T): bytes {
 export function sizeOf<T>(): uint64 {
   throw new NoImplementation()
 }
+
+export type { ContractUi, MethodUi, UiAmount, UiArgBinding, UiCard, UiJson, UiSource } from './ui'

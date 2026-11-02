@@ -1532,6 +1532,7 @@ export class Contract extends RootNode {
     this.reservedScratchSpace = props.reservedScratchSpace
     this.avmVersion = props.avmVersion
     this.autosalt = props.autosalt
+    this.ui = props.ui
   }
   readonly id: ContractReference
   readonly name: string
@@ -1545,6 +1546,7 @@ export class Contract extends RootNode {
   readonly reservedScratchSpace: Set<bigint>
   readonly avmVersion: bigint | null
   readonly autosalt: boolean | null
+  readonly ui: string | null
   accept<T>(visitor: RootNodeVisitor<T>): T {
     return visitor.visitContract(this)
   }
@@ -1586,6 +1588,7 @@ export class ARC4ABIMethodConfig {
     this.readonly = props.readonly
     this.defaultArgs = props.defaultArgs
     this.validateEncoding = props.validateEncoding
+    this.ui = props.ui
   }
   readonly sourceLocation: SourceLocation
   readonly allowedCompletionTypes: Array<OnCompletionAction>
@@ -1595,6 +1598,7 @@ export class ARC4ABIMethodConfig {
   readonly readonly: boolean
   readonly defaultArgs: Map<string, ABIMethodArgMemberDefault | ABIMethodArgConstantDefault>
   readonly validateEncoding: boolean | null
+  readonly ui: string | null
 }
 export type Constant = IntegerConstant | DecimalConstant | BoolConstant | BytesConstant | AddressConstant | MethodConstant
 export type LValue =

@@ -34,6 +34,7 @@ import { parseFunctionArgs } from './util/arg-parsing'
 import { requireAvmVersion } from './util/avm-version'
 import { processScratchRanges } from './util/scratch-slots'
 import { VoidExpressionBuilder } from './void-expression-builder'
+import { requireJsonObjectLiteral } from './util/json-literal'
 
 /**
  * Handles expressions using `this` in the context of a contract
@@ -231,7 +232,7 @@ export class ContractOptionsDecoratorBuilder extends FunctionBuilder {
 
   call(args: ReadonlyArray<NodeBuilder>, typeArgs: ReadonlyArray<PType>, sourceLocation: SourceLocation<ts.CallExpression>): NodeBuilder {
     const {
-      args: [{ avmVersion, autosalt, name, stateTotals, scratchSlots }],
+      args: [{ avmVersion, autosalt, name, stateTotals, scratchSlots, ui }],
     } = parseFunctionArgs({
       args,
       typeArgs,
@@ -245,6 +246,7 @@ export class ContractOptionsDecoratorBuilder extends FunctionBuilder {
           name: a.optional(stringPType),
           scratchSlots: a.optional(),
           stateTotals: a.optional(),
+          ui: a.optional(),
         }),
       ],
     })
@@ -256,6 +258,7 @@ export class ContractOptionsDecoratorBuilder extends FunctionBuilder {
       name: name && requireStringConstant(name).value,
       stateTotals: stateTotals && buildStateTotals(stateTotals),
       scratchSlots: scratchSlots && processScratchRanges(scratchSlots),
+      ui: ui && requireJsonObjectLiteral(ui, sourceLocation),
       sourceLocation,
     })
   }
