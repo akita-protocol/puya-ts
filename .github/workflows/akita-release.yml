@@ -1,0 +1,91 @@
+name: Akita fork release
+
+# Builds @algorandfoundation/puya-ts and @algorandfoundation/algorand-typescript
+# from this fork and attaches both tarballs to a GitHub release, so projects can
+# install them by URL without an npm publish:
+#
+#   "@algorandfoundation/puya-ts": "https://github.com/akita-protocol/puya-ts/releases/download/<tag>/puya-ts.tgz"
+#   "@algorandfoundation/algorand-typescript": "https://github.com/akita-protocol/puya-ts/releases/download/<tag>/algorand-typescript.tgz"
+#
+# The compiler downloads its puya binary from the akita-protocol/puya release
+# named by `targetedPuyaVersion` in src/constants.ts; publish that one first.
+#
+# Run it by pushing a branch named `akita-release/<tag>`, e.g. `akita-release/v1.4.0-akita.1`.
+
+on:
+  push:
+    branches: ['akita-release/**']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag, e.g. v1.4.0-akita.1'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency: akita-release-${{ github.event.inputs.tag || github.ref_name }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Version from tag
+        id: v
+        shell: bash
+        run: |
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          tag="${tag#akita-release/}"
+          [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-akita\.[0-9]+$ ]] || { echo "Bad tag: $tag" >&2; exit 1; }
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "version=${tag#v}" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - name: Build algorand-typescript
+        working-directory: packages/algo-ts
+        run: |
+          npm ci --ignore-scripts
+          npm pkg set version=${{ steps.v.outputs.version }}
+          npm run build
+
+      - name: Build puya-ts
+        run: |
+          npm ci --ignore-scripts
+          npm pkg set version=${{ steps.v.outputs.version }}
+          npm run build
+
+      - name: Test puya-ts
+        run: npx vitest run tests/approvals.spec.ts tests/expected-output.spec.ts
+
+      - name: Pack
+        shell: bash
+        env:
+          BASE: https://github.com/${{ github.repository }}/releases/download/${{ steps.v.outputs.tag }}
+        run: |
+          mkdir -p out
+          (cd packages/algo-ts/dist && npm pack --silent --pack-destination ../../../out)
+          mv out/algorandfoundation-algorand-typescript-*.tgz out/algorand-typescript.tgz
+          cd dist
+          npm pkg set "dependencies.@algorandfoundation/algorand-typescript=$BASE/algorand-typescript.tgz"
+          npm pack --silent --pack-destination ../out
+          cd ..
+          mv out/algorandfoundation-puya-ts-*.tgz out/puya-ts.tgz
+          ls -la out
+
+      - name: Publish release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.v.outputs.tag }}
+        run: |
+          puya=$(node -e "console.log(require('fs').readFileSync('src/constants.ts','utf8').match(/targetedPuyaVersion: '([^']+)'/)[1])")
+          notes="puya-ts with the ARC-56 \`ui\` option (akita-protocol fork). Targets puya ${puya} from akita-protocol/puya. Built from ${GITHUB_SHA}."
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 \
+            || gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "$TAG" --notes "$notes" --prerelease
+          gh release upload "$TAG" out/*.tgz --repo "$GITHUB_REPOSITORY" --clobber
