@@ -1,0 +1,99 @@
+main @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram:
+    block@0: // L1
+        let tmp%0#0: uint64 = (txn ApplicationID)
+        goto tmp%0#0 ? block@2 : block@1
+    block@1: // if_body_L1
+        tests/approvals/arc56-ui.algo.ts::RaffleUi.constructor()
+        goto block@2
+    block@2: // after_if_else_L1
+        goto block@3
+    block@3: // L5
+        let tmp%0#1: uint64 = (txn NumAppArgs)
+        let tmp%1#1: bool = (!= tmp%0#1 0u)
+        goto tmp%1#1 ? block@4 : block@11
+    block@4: // abi_routing_L5
+        let tmp%2#0: uint64 = (txn OnCompletion)
+        let tmp%3#0: bool = (== tmp%2#0 NoOp)
+        (assert tmp%3#0)
+        let tmp%4#0: uint64 = (txn ApplicationID)
+        let tmp%5#0: bool = (!= tmp%4#0 0u)
+        goto tmp%5#0 ? block@5 : block@9
+    block@5: // call_NoOp_L5
+        let tmp%6#0: bytes = (txna ApplicationArgs 0)
+        switch tmp%6#0 {method "enter(uint64)uint64" => block@6, method "price()uint64" => block@7, * => block@8}
+    block@6: // enter_route_L12
+        tests/approvals/arc56-ui.algo.ts::RaffleUi.enter[routing]()
+        goto block@8
+    block@7: // price_route_L33
+        tests/approvals/arc56-ui.algo.ts::RaffleUi.price[routing]()
+        goto block@8
+    block@8: // switch_case_next_L5
+        goto block@10
+    block@9: // create_NoOp_L5
+        goto block@10
+    block@10: // after_if_else_L5
+        goto block@12
+    block@11: // __algots__.defaultCreate_L5
+        let tmp%7#0: uint64 = (txn OnCompletion)
+        let tmp%8#0: bool = (== tmp%7#0 NoOp)
+        let tmp%9#0: uint64 = (txn ApplicationID)
+        let tmp%10#0: bool = (== tmp%9#0 0u)
+        let tmp%11#0: bool = (&& tmp%8#0 tmp%10#0)
+        (assert tmp%11#0)
+        tests/approvals/arc56-ui.algo.ts::RaffleUi.__algots__.defaultCreate()
+        exit 1u
+    block@12: // after_if_else_L5
+        exit 0u
+    block@13: // after_inlined_tests/approvals/arc56-ui.algo.ts::RaffleUi.__puya_arc4_router___L1
+        let tmp%1#0: bool = undefined
+        return tmp%1#0
+
+subroutine tests/approvals/arc56-ui.algo.ts::RaffleUi.enter[routing]() -> void:
+    block@0: // L12
+        let tmp%0#0: bytes = (txna ApplicationArgs 1)
+        let len%0#0: uint64 = (len tmp%0#0)
+        let eq%0#0: bool = (== len%0#0 8u)
+        (assert eq%0#0) // invalid number of bytes for arc4.uint64
+        let as_Encoded(uint64)%0#0: Encoded(uint64) = tmp%0#0
+        let tmp%1#0: uint64 = (btoi as_Encoded(uint64)%0#0)
+        let tmp%2#0: uint64 = tests/approvals/arc56-ui.algo.ts::RaffleUi.enter(tmp%1#0)
+        let aggregate%val_as_bytes%0#0: bytes[8] = (itob tmp%2#0)
+        let aggregate%as_Encoded(uint64)%0#0: Encoded(uint64) = aggregate%val_as_bytes%0#0
+        let tmp%3#0: Encoded(uint64) = aggregate%as_Encoded(uint64)%0#0
+        let tmp%4#0: bytes = (concat 0x151f7c75 tmp%3#0)
+        (log tmp%4#0)
+        exit 1u
+
+subroutine tests/approvals/arc56-ui.algo.ts::RaffleUi.price[routing]() -> void:
+    block@0: // L33
+        let tmp%0#0: uint64 = tests/approvals/arc56-ui.algo.ts::RaffleUi.price()
+        let aggregate%val_as_bytes%0#0: bytes[8] = (itob tmp%0#0)
+        let aggregate%as_Encoded(uint64)%0#0: Encoded(uint64) = aggregate%val_as_bytes%0#0
+        let tmp%1#0: Encoded(uint64) = aggregate%as_Encoded(uint64)%0#0
+        let tmp%2#0: bytes = (concat 0x151f7c75 tmp%1#0)
+        (log tmp%2#0)
+        exit 1u
+
+subroutine tests/approvals/arc56-ui.algo.ts::RaffleUi.enter(tickets: uint64) -> uint64:
+    block@0: // L12
+        return tickets#0
+
+subroutine tests/approvals/arc56-ui.algo.ts::RaffleUi.price() -> uint64:
+    block@0: // L33
+        let (maybe_value%0#0: uint64, maybe_exists%0#0: bool) = (app_global_get_ex 0u "ticketPrice")
+        (assert maybe_exists%0#0) // check GlobalState exists
+        return maybe_value%0#0
+
+subroutine tests/approvals/arc56-ui.algo.ts::RaffleUi.__algots__.defaultCreate() -> void:
+    block@0: // L5
+        return 
+
+subroutine tests/approvals/arc56-ui.algo.ts::RaffleUi.constructor() -> void:
+    block@0: // L5
+        goto block@1
+    block@1: // L1
+        goto block@2
+    block@2: // after_inlined_@algorandfoundation/algorand-typescript/base-contract.d.ts::BaseContract.constructor_L5
+        (app_global_put "ticketPrice" 1000000u)
+        (app_global_put "endTimestamp" 0u)
+        return 

@@ -295,7 +295,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": false
+          "validate_encoding": false,
+          "ui": null
         }
       },
       {
@@ -365,7 +366,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 21,
@@ -533,7 +535,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": false
+          "validate_encoding": false,
+          "ui": null
         }
       },
       {
@@ -600,7 +603,8 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   },
   {
     "_$%!#ID": 31,
@@ -768,7 +772,8 @@
           "resource_encoding": "value",
           "readonly": false,
           "default_args": {},
-          "validate_encoding": false
+          "validate_encoding": false,
+          "ui": null
         }
       },
       {
@@ -835,6 +840,7 @@
     },
     "reserved_scratch_space": [],
     "avm_version": null,
-    "autosalt": null
+    "autosalt": null,
+    "ui": null
   }
 ]
